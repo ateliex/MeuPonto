@@ -17,6 +17,7 @@ namespace MeuPonto.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
+                .HasDefaultSchema("dbo")
                 .HasAnnotation("ProductVersion", "8.0.8")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
@@ -27,7 +28,7 @@ namespace MeuPonto.Data.Migrations
                     b.Property<bool>("JavascriptIsEnabled")
                         .HasColumnType("bit");
 
-                    b.ToTable("Configuracoes", (string)null);
+                    b.ToTable("Configuracoes", "dbo");
                 });
 
             modelBuilder.Entity("MeuPonto.Models.Contratos.Contrato", b =>
@@ -61,7 +62,7 @@ namespace MeuPonto.Data.Migrations
 
                     b.HasIndex("EmpregadorId");
 
-                    b.ToTable("Contratos", (string)null);
+                    b.ToTable("Contratos", "dbo");
                 });
 
             modelBuilder.Entity("MeuPonto.Models.Contratos.Empregador", b =>
@@ -87,7 +88,7 @@ namespace MeuPonto.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Empregadores", (string)null);
+                    b.ToTable("Empregadores", "dbo");
                 });
 
             modelBuilder.Entity("MeuPonto.Models.Folhas.Folha", b =>
@@ -125,7 +126,7 @@ namespace MeuPonto.Data.Migrations
 
                     b.HasIndex("ContratoId");
 
-                    b.ToTable("Folhas", (string)null);
+                    b.ToTable("Folhas", "dbo");
                 });
 
             modelBuilder.Entity("MeuPonto.Models.Folhas.StatusFolha", b =>
@@ -140,7 +141,7 @@ namespace MeuPonto.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("StatusFolha");
+                    b.ToTable("StatusFolha", "dbo");
 
                     b.HasData(
                         new
@@ -186,7 +187,7 @@ namespace MeuPonto.Data.Migrations
 
                     b.HasIndex("PontoId");
 
-                    b.ToTable("Comprovantes", (string)null);
+                    b.ToTable("Comprovantes", "dbo");
                 });
 
             modelBuilder.Entity("MeuPonto.Models.Pontos.Momento", b =>
@@ -201,7 +202,7 @@ namespace MeuPonto.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Momento");
+                    b.ToTable("Momento", "dbo");
 
                     b.HasData(
                         new
@@ -233,7 +234,7 @@ namespace MeuPonto.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Pausa");
+                    b.ToTable("Pausa", "dbo");
 
                     b.HasData(
                         new
@@ -309,7 +310,7 @@ namespace MeuPonto.Data.Migrations
 
                     b.HasIndex("ContratoId");
 
-                    b.ToTable("Pontos", (string)null);
+                    b.ToTable("Pontos", "dbo");
                 });
 
             modelBuilder.Entity("MeuPonto.Models.Pontos.TipoImagem", b =>
@@ -324,7 +325,7 @@ namespace MeuPonto.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("TipoImagem");
+                    b.ToTable("TipoImagem", "dbo");
 
                     b.HasData(
                         new
@@ -353,7 +354,7 @@ namespace MeuPonto.Data.Migrations
 
                             b1.HasKey("ContratoId");
 
-                            b1.ToTable("Contratos");
+                            b1.ToTable("Contratos", "dbo");
 
                             b1.WithOwner()
                                 .HasForeignKey("ContratoId");
@@ -372,7 +373,7 @@ namespace MeuPonto.Data.Migrations
 
                                     b2.HasKey("ContratoId", "DiaSemana");
 
-                                    b2.ToTable("Contratos_JornadaTrabalhoDiaria", (string)null);
+                                    b2.ToTable("Contratos_JornadaTrabalhoDiaria", "dbo");
 
                                     b2.WithOwner()
                                         .HasForeignKey("ContratoId");
@@ -405,7 +406,7 @@ namespace MeuPonto.Data.Migrations
 
                             b1.HasKey("FolhaId");
 
-                            b1.ToTable("Folhas");
+                            b1.ToTable("Folhas", "dbo");
 
                             b1.WithOwner()
                                 .HasForeignKey("FolhaId");
@@ -442,7 +443,7 @@ namespace MeuPonto.Data.Migrations
 
                                     b2.HasKey("FolhaId", "Dia");
 
-                                    b2.ToTable("Folhas_ApuracaoDiaria", (string)null);
+                                    b2.ToTable("Folhas_ApuracaoDiaria", "dbo");
 
                                     b2.WithOwner()
                                         .HasForeignKey("FolhaId");

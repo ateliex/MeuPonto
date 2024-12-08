@@ -13,8 +13,12 @@ namespace MeuPonto.Data.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.EnsureSchema(
+                name: "dbo");
+
             migrationBuilder.CreateTable(
                 name: "Configuracoes",
+                schema: "dbo",
                 columns: table => new
                 {
                     JavascriptIsEnabled = table.Column<bool>(type: "bit", nullable: false)
@@ -25,6 +29,7 @@ namespace MeuPonto.Data.Migrations
 
             migrationBuilder.CreateTable(
                 name: "Empregadores",
+                schema: "dbo",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -39,6 +44,7 @@ namespace MeuPonto.Data.Migrations
 
             migrationBuilder.CreateTable(
                 name: "Momento",
+                schema: "dbo",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false),
@@ -51,6 +57,7 @@ namespace MeuPonto.Data.Migrations
 
             migrationBuilder.CreateTable(
                 name: "Pausa",
+                schema: "dbo",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false),
@@ -63,6 +70,7 @@ namespace MeuPonto.Data.Migrations
 
             migrationBuilder.CreateTable(
                 name: "StatusFolha",
+                schema: "dbo",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false),
@@ -75,6 +83,7 @@ namespace MeuPonto.Data.Migrations
 
             migrationBuilder.CreateTable(
                 name: "TipoImagem",
+                schema: "dbo",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false),
@@ -87,6 +96,7 @@ namespace MeuPonto.Data.Migrations
 
             migrationBuilder.CreateTable(
                 name: "Contratos",
+                schema: "dbo",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -102,6 +112,7 @@ namespace MeuPonto.Data.Migrations
                     table.ForeignKey(
                         name: "FK_Contratos_Empregadores_EmpregadorId",
                         column: x => x.EmpregadorId,
+                        principalSchema: "dbo",
                         principalTable: "Empregadores",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -109,6 +120,7 @@ namespace MeuPonto.Data.Migrations
 
             migrationBuilder.CreateTable(
                 name: "Contratos_JornadaTrabalhoDiaria",
+                schema: "dbo",
                 columns: table => new
                 {
                     DiaSemana = table.Column<int>(type: "int", nullable: false),
@@ -121,6 +133,7 @@ namespace MeuPonto.Data.Migrations
                     table.ForeignKey(
                         name: "FK_Contratos_JornadaTrabalhoDiaria_Contratos_ContratoId",
                         column: x => x.ContratoId,
+                        principalSchema: "dbo",
                         principalTable: "Contratos",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -128,6 +141,7 @@ namespace MeuPonto.Data.Migrations
 
             migrationBuilder.CreateTable(
                 name: "Folhas",
+                schema: "dbo",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -145,6 +159,7 @@ namespace MeuPonto.Data.Migrations
                     table.ForeignKey(
                         name: "FK_Folhas_Contratos_ContratoId",
                         column: x => x.ContratoId,
+                        principalSchema: "dbo",
                         principalTable: "Contratos",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -152,6 +167,7 @@ namespace MeuPonto.Data.Migrations
 
             migrationBuilder.CreateTable(
                 name: "Pontos",
+                schema: "dbo",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -170,6 +186,7 @@ namespace MeuPonto.Data.Migrations
                     table.ForeignKey(
                         name: "FK_Pontos_Contratos_ContratoId",
                         column: x => x.ContratoId,
+                        principalSchema: "dbo",
                         principalTable: "Contratos",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -177,6 +194,7 @@ namespace MeuPonto.Data.Migrations
 
             migrationBuilder.CreateTable(
                 name: "Folhas_ApuracaoDiaria",
+                schema: "dbo",
                 columns: table => new
                 {
                     Dia = table.Column<int>(type: "int", nullable: false),
@@ -195,6 +213,7 @@ namespace MeuPonto.Data.Migrations
                     table.ForeignKey(
                         name: "FK_Folhas_ApuracaoDiaria_Folhas_FolhaId",
                         column: x => x.FolhaId,
+                        principalSchema: "dbo",
                         principalTable: "Folhas",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -202,6 +221,7 @@ namespace MeuPonto.Data.Migrations
 
             migrationBuilder.CreateTable(
                 name: "Comprovantes",
+                schema: "dbo",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -217,12 +237,14 @@ namespace MeuPonto.Data.Migrations
                     table.ForeignKey(
                         name: "FK_Comprovantes_Pontos_PontoId",
                         column: x => x.PontoId,
+                        principalSchema: "dbo",
                         principalTable: "Pontos",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.InsertData(
+                schema: "dbo",
                 table: "Momento",
                 columns: new[] { "Id", "Nome" },
                 values: new object[,]
@@ -233,6 +255,7 @@ namespace MeuPonto.Data.Migrations
                 });
 
             migrationBuilder.InsertData(
+                schema: "dbo",
                 table: "Pausa",
                 columns: new[] { "Id", "Nome" },
                 values: new object[,]
@@ -246,6 +269,7 @@ namespace MeuPonto.Data.Migrations
                 });
 
             migrationBuilder.InsertData(
+                schema: "dbo",
                 table: "StatusFolha",
                 columns: new[] { "Id", "Nome" },
                 values: new object[,]
@@ -255,6 +279,7 @@ namespace MeuPonto.Data.Migrations
                 });
 
             migrationBuilder.InsertData(
+                schema: "dbo",
                 table: "TipoImagem",
                 columns: new[] { "Id", "Nome" },
                 values: new object[,]
@@ -265,21 +290,25 @@ namespace MeuPonto.Data.Migrations
 
             migrationBuilder.CreateIndex(
                 name: "IX_Comprovantes_PontoId",
+                schema: "dbo",
                 table: "Comprovantes",
                 column: "PontoId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Contratos_EmpregadorId",
+                schema: "dbo",
                 table: "Contratos",
                 column: "EmpregadorId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Folhas_ContratoId",
+                schema: "dbo",
                 table: "Folhas",
                 column: "ContratoId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Pontos_ContratoId",
+                schema: "dbo",
                 table: "Pontos",
                 column: "ContratoId");
         }
@@ -288,40 +317,52 @@ namespace MeuPonto.Data.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Comprovantes");
+                name: "Comprovantes",
+                schema: "dbo");
 
             migrationBuilder.DropTable(
-                name: "Configuracoes");
+                name: "Configuracoes",
+                schema: "dbo");
 
             migrationBuilder.DropTable(
-                name: "Contratos_JornadaTrabalhoDiaria");
+                name: "Contratos_JornadaTrabalhoDiaria",
+                schema: "dbo");
 
             migrationBuilder.DropTable(
-                name: "Folhas_ApuracaoDiaria");
+                name: "Folhas_ApuracaoDiaria",
+                schema: "dbo");
 
             migrationBuilder.DropTable(
-                name: "Momento");
+                name: "Momento",
+                schema: "dbo");
 
             migrationBuilder.DropTable(
-                name: "Pausa");
+                name: "Pausa",
+                schema: "dbo");
 
             migrationBuilder.DropTable(
-                name: "StatusFolha");
+                name: "StatusFolha",
+                schema: "dbo");
 
             migrationBuilder.DropTable(
-                name: "TipoImagem");
+                name: "TipoImagem",
+                schema: "dbo");
 
             migrationBuilder.DropTable(
-                name: "Pontos");
+                name: "Pontos",
+                schema: "dbo");
 
             migrationBuilder.DropTable(
-                name: "Folhas");
+                name: "Folhas",
+                schema: "dbo");
 
             migrationBuilder.DropTable(
-                name: "Contratos");
+                name: "Contratos",
+                schema: "dbo");
 
             migrationBuilder.DropTable(
-                name: "Empregadores");
+                name: "Empregadores",
+                schema: "dbo");
         }
     }
 }

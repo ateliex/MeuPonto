@@ -22,6 +22,8 @@ public class SqlServerModelCustomizer : RelationalModelCustomizer
     {
         base.Customize(modelBuilder, context);
 
+        modelBuilder.HasDefaultSchema("dbo");
+
         modelBuilder.Entity<Configuracoes>()
             .ToTable("Configuracoes")
             .HasNoKey();
