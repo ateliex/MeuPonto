@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>MeuPonto</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.8">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\pkg\System.Extensions\System.Extensions.csproj" />
+    <ProjectReference Include="..\MeuPonto.DomainModel\MeuPonto.DomainModel.csproj" />
+    <ProjectReference Include="..\MeuPonto.EntityFrameworkCore.Sqlite\MeuPonto.EntityFrameworkCore.Sqlite.csproj" />
+    <ProjectReference Include="..\MeuPonto.EntityFrameworkCore.SqlServer\MeuPonto.EntityFrameworkCore.SqlServer.csproj" />
+    <ProjectReference Include="..\MeuPonto.EntityFrameworkCore\MeuPonto.EntityFrameworkCore.csproj" />
+  </ItemGroup>
+
+</Project>
