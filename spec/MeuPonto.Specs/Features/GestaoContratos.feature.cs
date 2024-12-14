@@ -23,11 +23,28 @@ namespace MeuPonto.Features
     public partial class GestaoContratosFeature
     {
         
-        private static global::Reqnroll.ITestRunner testRunner;
+        private global::Reqnroll.ITestRunner testRunner;
         
         private Microsoft.VisualStudio.TestTools.UnitTesting.TestContext _testContext;
         
         private static string[] featureTags = ((string[])(null));
+        
+        private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new System.Globalization.CultureInfo("pt-br"), "Features", "Gestão Contratos", @"O sistema deverá fornecer para o trabalhador a capacidade de gerenciar seus contratos.
+
+Abrir Contrato
+
+O sistema deverá fornecer para o trabalhador a capacidade de abrir um contrato.
+
+1. Trabalhador solicita abertura de contrato
+2. Sistema apresenta um contrato novo
+3. Trabalhador abre o contrato (nome, ativo, segunda, terça, …) (E2)
+4. Sistema registra o contrato
+
+O sistema deverá fornecer para o trabalhador a capacidade de alterar um contrato
+
+O sistema deverá fornecer para o trabalhador a capacidade de encerrar um contrato
+
+O sistema deverá fornecer para o trabalhador a capacidade de excluir um contrato", global::Reqnroll.ProgrammingLanguage.CSharp, featureTags);
         
 #line 1 "GestaoContratos.feature"
 #line hidden
@@ -47,41 +64,25 @@ namespace MeuPonto.Features
         [Microsoft.VisualStudio.TestTools.UnitTesting.ClassInitializeAttribute()]
         public static async System.Threading.Tasks.Task FeatureSetupAsync(Microsoft.VisualStudio.TestTools.UnitTesting.TestContext testContext)
         {
-            testRunner = global::Reqnroll.TestRunnerManager.GetTestRunnerForAssembly();
-            global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new System.Globalization.CultureInfo("pt-br"), "Features", "Gestão Contratos", @"O sistema deverá fornecer para o trabalhador a capacidade de gerenciar seus contratos.
-
-Abrir Contrato
-
-O sistema deverá fornecer para o trabalhador a capacidade de abrir um contrato.
-
-1. Trabalhador solicita abertura de contrato
-2. Sistema apresenta um contrato novo
-3. Trabalhador abre o contrato (nome, ativo, segunda, terça, …) (E2)
-4. Sistema registra o contrato
-
-O sistema deverá fornecer para o trabalhador a capacidade de alterar um contrato
-
-O sistema deverá fornecer para o trabalhador a capacidade de encerrar um contrato
-
-O sistema deverá fornecer para o trabalhador a capacidade de excluir um contrato", global::Reqnroll.ProgrammingLanguage.CSharp, featureTags);
-            await testRunner.OnFeatureStartAsync(featureInfo);
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.ClassCleanupAttribute(Microsoft.VisualStudio.TestTools.UnitTesting.ClassCleanupBehavior.EndOfClass)]
         public static async System.Threading.Tasks.Task FeatureTearDownAsync()
         {
-            await testRunner.OnFeatureEndAsync();
-            global::Reqnroll.TestRunnerManager.ReleaseTestRunner(testRunner);
-            testRunner = null;
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestInitializeAttribute()]
         public async System.Threading.Tasks.Task TestInitializeAsync()
         {
+            testRunner = global::Reqnroll.TestRunnerManager.GetTestRunnerForAssembly(featureHint: featureInfo);
             if (((testRunner.FeatureContext != null) 
-                        && (testRunner.FeatureContext.FeatureInfo.Title != "Gestão Contratos")))
+                        && (testRunner.FeatureContext.FeatureInfo.Equals(featureInfo) == false)))
             {
-                await global::MeuPonto.Features.GestaoContratosFeature.FeatureSetupAsync(null);
+                await testRunner.OnFeatureEndAsync();
+            }
+            if ((testRunner.FeatureContext == null))
+            {
+                await testRunner.OnFeatureStartAsync(featureInfo);
             }
         }
         
@@ -89,6 +90,7 @@ O sistema deverá fornecer para o trabalhador a capacidade de excluir um contrat
         public async System.Threading.Tasks.Task TestTearDownAsync()
         {
             await testRunner.OnScenarioEndAsync();
+            global::Reqnroll.TestRunnerManager.ReleaseTestRunner(testRunner);
         }
         
         public void ScenarioInitialize(global::Reqnroll.ScenarioInfo scenarioInfo)
