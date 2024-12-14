@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using System.Security.Claims;
 using System.Transactions;
 
@@ -33,20 +34,27 @@ public class Program
                 options.HtmlHelperOptions.ClientValidationEnabled = false;
             });
 
+        // Add the localization services to the services container
+        builder.Services.AddLocalization();
+
+        builder.Services.Configure<RequestLocalizationOptions>(options =>
+        {
+            var supportedCultures = new[] { "pt-BR", "en" };
+
+            options.SetDefaultCulture(supportedCultures[0])
+                .AddSupportedCultures(supportedCultures)
+                .AddSupportedUICultures(supportedCultures);
+        });
+
         builder.Services.AddTransient(p => new DateTimeSnapshot(() => DateTime.Now));
 
         var app = builder.Build();
 
         app.UseMiddleware<CacheMiddleware>();
 
-        var supportedCultures = new[] { "pt-BR", "en-US" };
-        var localizationOptions = new RequestLocalizationOptions().SetDefaultCulture(supportedCultures[0])
-            .AddSupportedCultures(supportedCultures)
-            .AddSupportedUICultures(supportedCultures);
+        var localizationOptions = app.Services.GetService<IOptions<RequestLocalizationOptions>>();
 
-        localizationOptions.ApplyCurrentCultureToResponseHeaders = true;
-
-        app.UseRequestLocalization(localizationOptions);
+        app.UseRequestLocalization(localizationOptions.Value);
 
         app.UseMiddleware<RequestLocalizationMiddleware>();
 
