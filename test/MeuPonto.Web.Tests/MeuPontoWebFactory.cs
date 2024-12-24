@@ -27,15 +27,13 @@ public class MeuPontoWebFactory<TProgram> : WebApplicationFactory<TProgram> wher
 
             //if (useLocalDatabase)
             {
-                var dbContextDescriptor = services.SingleOrDefault(
-                d => d.ServiceType ==
-                    typeof(DbContextOptions<MeuPontoDbContext>));
+                //var dbContextDescriptor = services.SingleOrDefault(d => d.ServiceType == typeof(DbContextOptions<MeuPontoDbContext>));
+
+                var dbContextDescriptor = services.SingleOrDefault(d => d.ServiceType == typeof(IDbContextOptionsConfiguration<MeuPontoDbContext>));
 
                 services.Remove(dbContextDescriptor);
 
-            var dbConnectionDescriptor = services.SingleOrDefault(
-                d => d.ServiceType ==
-                    typeof(DbConnection));
+                var dbConnectionDescriptor = services.SingleOrDefault(d => d.ServiceType == typeof(DbConnection));
 
                 services.Remove(dbConnectionDescriptor);
 
@@ -43,6 +41,7 @@ public class MeuPontoWebFactory<TProgram> : WebApplicationFactory<TProgram> wher
                 services.AddSingleton<DbConnection>(container =>
                 {
                     var connection = new SqliteConnection("DataSource=:memory:");
+
                     connection.Open();
 
                     return connection;
@@ -51,6 +50,7 @@ public class MeuPontoWebFactory<TProgram> : WebApplicationFactory<TProgram> wher
                 services.AddDbContext<MeuPontoDbContext>((container, options) =>
                 {
                     var connection = container.GetRequiredService<DbConnection>();
+
                     options.UseSqlite(connection, b => b.MigrationsAssembly("MeuPonto.EntityFrameworkCore.Sqlite"))
                         .UseSqliteModel();
 
