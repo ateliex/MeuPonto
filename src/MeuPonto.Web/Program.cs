@@ -83,7 +83,7 @@ public class Program
         app.MapRazorPages()
            .WithStaticAssets();
 
-        app.Services.EnsureDatabaseExists();
+        app.Services.EnsureDatabaseExists(builder.Configuration);
 
         app.Run();
     }

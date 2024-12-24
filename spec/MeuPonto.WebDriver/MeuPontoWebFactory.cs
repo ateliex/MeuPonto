@@ -6,6 +6,7 @@ using MeuPonto.Infrastructure;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using System.Data.Common;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 
 namespace MeuPonto;
 
@@ -26,33 +27,38 @@ public class MeuPontoWebFactory<TProgram> : WebApplicationFactory<TProgram> wher
                 .AddScheme<AuthenticationSchemeOptions, TestAuthHandler>(
                     "TestScheme", options => { });
 
-            var dbContextDescriptor = services.SingleOrDefault(d =>
-                d.ServiceType == typeof(DbContextOptions<MeuPontoDbContext>));
+            var useLocalDatabase = Environment.GetEnvironmentVariable("UseLocalDatabase") == "true";
 
-            services.Remove(dbContextDescriptor);
-
-            var dbConnectionDescriptor = services.SingleOrDefault(d =>
-                d.ServiceType == typeof(DbConnection));
-
-            services.Remove(dbConnectionDescriptor);
-
-            // Create open SqliteConnection so EF won't automatically close it.
-            services.AddSingleton<DbConnection>(container =>
+            //if (useLocalDatabase)
             {
-                var connection = new SqliteConnection("DataSource=:memory:");
-                connection.Open();
+                var dbContextDescriptor = services.SingleOrDefault(d =>
+                    d.ServiceType == typeof(DbContextOptions<MeuPontoDbContext>));
 
-                return connection;
-            });
+                services.Remove(dbContextDescriptor);
 
-            services.AddDbContext<MeuPontoDbContext>((container, options) =>
-            {
-                var connection = container.GetRequiredService<DbConnection>();
-                options.UseSqlite(connection, b => b.MigrationsAssembly("MeuPonto.EntityFrameworkCore.Sqlite"))
-                    .UseSqliteModel();
+                var dbConnectionDescriptor = services.SingleOrDefault(d =>
+                    d.ServiceType == typeof(DbConnection));
 
-                //options.UseInMemoryDatabase("InMemoryDbForTesting");
-            });
+                services.Remove(dbConnectionDescriptor);
+
+                // Create open SqliteConnection so EF won't automatically close it.
+                services.AddSingleton<DbConnection>(container =>
+                {
+                    var connection = new SqliteConnection("DataSource=:memory:");
+                    connection.Open();
+
+                    return connection;
+                });
+
+                services.AddDbContext<MeuPontoDbContext>((container, options) =>
+                {
+                    var connection = container.GetRequiredService<DbConnection>();
+                    options.UseSqlite(connection, b => b.MigrationsAssembly("MeuPonto.EntityFrameworkCore.Sqlite"))
+                        .UseSqliteModel();
+
+                    //options.UseInMemoryDatabase("InMemoryDbForTesting");
+                });
+            }
         });
 
         builder.UseEnvironment("Development");

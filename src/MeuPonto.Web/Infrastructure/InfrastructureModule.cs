@@ -1,15 +1,12 @@
-﻿using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-
-namespace MeuPonto.Infrastructure;
+﻿namespace MeuPonto.Infrastructure;
 
 public static class InfrastructureModule
 {
-    private static bool _local = false;
-
     public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
-        if (_local)
+        var useLocalDatabase = configuration.GetValue<bool>("UseLocalDatabase");
+
+        if (useLocalDatabase)
         {
             services.AddSqliteDbServices(configuration);
         }
@@ -18,32 +15,34 @@ public static class InfrastructureModule
             services.AddSqlServerDbServices(configuration);
         }
 
-        //
-
         return services;
     }
 
-    public static void EnsureDatabaseExists(this IServiceProvider serviceProvider)
+    public static void EnsureDatabaseExists(this IServiceProvider services, IConfiguration configuration)
     {
-        if (_local)
+        var useLocalDatabase = configuration.GetValue<bool>("UseLocalDatabase");
+
+        if (useLocalDatabase)
         {
-            serviceProvider.EnsureSqliteDatabaseExists();
+            services.EnsureSqliteDatabaseExists();
         }
         else
         {
-            serviceProvider.EnsureSqlServerDatabaseExists();
+            services.EnsureSqlServerDatabaseExists();
         }
     }
 
-    public static async Task EnsureDatabaseExistsAsync(this IServiceProvider serviceProvider)
+    public static async Task EnsureDatabaseExistsAsync(this IServiceProvider services, IConfiguration configuration)
     {
-        if (_local)
+        var useLocalDatabase = configuration.GetValue<bool>("UseLocalDatabase");
+
+        if (useLocalDatabase)
         {
-            await serviceProvider.EnsureSqliteDatabaseExistsAsync();
+            await services.EnsureSqliteDatabaseExistsAsync();
         }
         else
         {
-            await serviceProvider.EnsureSqlServerDatabaseExistsAsync();
+            await services.EnsureSqlServerDatabaseExistsAsync();
         }
     }
 }

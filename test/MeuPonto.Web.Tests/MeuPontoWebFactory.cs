@@ -8,6 +8,8 @@ using MeuPonto.Data;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using MeuPonto.Infrastructure;
+using System.Configuration;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 
 namespace MeuPonto;
 
@@ -21,35 +23,40 @@ public class MeuPontoWebFactory<TProgram> : WebApplicationFactory<TProgram> wher
                 .AddScheme<AuthenticationSchemeOptions, TestAuthHandler>(
                     "TestScheme", options => { });
 
-            var dbContextDescriptor = services.SingleOrDefault(
+            var useLocalDatabase = Environment.GetEnvironmentVariable("UseLocalDatabase") == "true";
+
+            //if (useLocalDatabase)
+            {
+                var dbContextDescriptor = services.SingleOrDefault(
                 d => d.ServiceType ==
                     typeof(DbContextOptions<MeuPontoDbContext>));
 
-            services.Remove(dbContextDescriptor);
+                services.Remove(dbContextDescriptor);
 
             var dbConnectionDescriptor = services.SingleOrDefault(
                 d => d.ServiceType ==
                     typeof(DbConnection));
 
-            services.Remove(dbConnectionDescriptor);
+                services.Remove(dbConnectionDescriptor);
 
-            // Create open SqliteConnection so EF won't automatically close it.
-            services.AddSingleton<DbConnection>(container =>
-            {
-                var connection = new SqliteConnection("DataSource=:memory:");
-                connection.Open();
+                // Create open SqliteConnection so EF won't automatically close it.
+                services.AddSingleton<DbConnection>(container =>
+                {
+                    var connection = new SqliteConnection("DataSource=:memory:");
+                    connection.Open();
 
-                return connection;
-            });
+                    return connection;
+                });
 
-            services.AddDbContext<MeuPontoDbContext>((container, options) =>
-            {
-                var connection = container.GetRequiredService<DbConnection>();
-                options.UseSqlite(connection, b => b.MigrationsAssembly("MeuPonto.EntityFrameworkCore.Sqlite"))
-                    .UseSqliteModel();
+                services.AddDbContext<MeuPontoDbContext>((container, options) =>
+                {
+                    var connection = container.GetRequiredService<DbConnection>();
+                    options.UseSqlite(connection, b => b.MigrationsAssembly("MeuPonto.EntityFrameworkCore.Sqlite"))
+                        .UseSqliteModel();
 
-                //options.UseInMemoryDatabase("InMemoryDbForTesting");
-            });
+                    //options.UseInMemoryDatabase("InMemoryDbForTesting");
+                });
+            }
         });
 
         builder.UseEnvironment("Development");
