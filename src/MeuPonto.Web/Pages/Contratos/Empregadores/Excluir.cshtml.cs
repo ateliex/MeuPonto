@@ -2,7 +2,7 @@
 using MeuPonto.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using MeuPonto.Models.Contratos;
+using MeuPonto.Models;
 
 namespace MeuPonto.Pages.Contratos.Empregadores;
 

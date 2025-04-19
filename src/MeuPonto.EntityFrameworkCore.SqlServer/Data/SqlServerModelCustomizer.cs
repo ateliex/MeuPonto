@@ -1,7 +1,4 @@
 ﻿using MeuPonto.Models;
-using MeuPonto.Models.Contratos;
-using MeuPonto.Models.Folhas;
-using MeuPonto.Models.Pontos;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 

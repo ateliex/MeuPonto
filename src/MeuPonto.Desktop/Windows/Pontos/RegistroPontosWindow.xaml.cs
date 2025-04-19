@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Data;
 using System.Windows.Input;
-using MeuPonto.Models.Pontos;
+using MeuPonto.Models;
 
 namespace MeuPonto.Windows.Pontos;
 

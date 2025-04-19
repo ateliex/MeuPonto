@@ -1,4 +1,4 @@
-﻿using MeuPonto.Models.Pontos;
+﻿using MeuPonto.Models;
 
 namespace MeuPonto.Support;
 

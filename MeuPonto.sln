@@ -45,6 +45,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "System.Xaml.Extensions", "p
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeuPonto.DesktopDriver", "spec\MeuPonto.DesktopDriver\MeuPonto.DesktopDriver.csproj", "{A193081C-1F72-47BC-849F-8B94E71F05C6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeuPonto.ApplicationCore", "src\MeuPonto.ApplicationCore\MeuPonto.ApplicationCore.csproj", "{835D65F7-12CC-4E98-8C36-71A0E239CA00}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeuPonto.Api", "src\MeuPonto.Api\MeuPonto.Api.csproj", "{81700793-5C28-40F0-96FC-6AF740C1FBB4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -99,6 +103,14 @@ Global
 		{A193081C-1F72-47BC-849F-8B94E71F05C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A193081C-1F72-47BC-849F-8B94E71F05C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A193081C-1F72-47BC-849F-8B94E71F05C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{835D65F7-12CC-4E98-8C36-71A0E239CA00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{835D65F7-12CC-4E98-8C36-71A0E239CA00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{835D65F7-12CC-4E98-8C36-71A0E239CA00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{835D65F7-12CC-4E98-8C36-71A0E239CA00}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81700793-5C28-40F0-96FC-6AF740C1FBB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81700793-5C28-40F0-96FC-6AF740C1FBB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81700793-5C28-40F0-96FC-6AF740C1FBB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81700793-5C28-40F0-96FC-6AF740C1FBB4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -118,5 +130,10 @@ Global
 		{87FF636A-D623-489E-B7C9-52F3469BD510} = {0E89EC2B-2A3F-4D9C-8F27-02B51772751A}
 		{1F33B780-66AE-4633-83D6-53F8A6B87D10} = {E9D0B5B9-7FB6-4BC8-9F2E-98A657381EA1}
 		{A193081C-1F72-47BC-849F-8B94E71F05C6} = {6D7DCA13-725E-4814-AE27-5BFC42CBB583}
+		{835D65F7-12CC-4E98-8C36-71A0E239CA00} = {9E592ACA-1FD5-4927-A7A6-945131D6C69E}
+		{81700793-5C28-40F0-96FC-6AF740C1FBB4} = {0E89EC2B-2A3F-4D9C-8F27-02B51772751A}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F3311756-FDB3-407A-AEA9-EF151F6AE0B8}
 	EndGlobalSection
 EndGlobal

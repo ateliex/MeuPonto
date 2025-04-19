@@ -2,8 +2,7 @@
 using MeuPonto.Helpers;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
-using MeuPonto.Models.Folhas;
-using MeuPonto.Models.Pontos;
+using MeuPonto.Models;
 
 namespace MeuPonto.Pages.Folhas;
 

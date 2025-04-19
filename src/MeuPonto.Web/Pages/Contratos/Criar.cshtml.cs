@@ -3,8 +3,8 @@ using MeuPonto.Extensions;
 using MeuPonto.Helpers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using MeuPonto.Features.GestaoContratos;
-using MeuPonto.Models.Contratos;
+using MeuPonto.Models;
+using MeuPonto.Facades;
 
 namespace MeuPonto.Pages.Contratos;
 

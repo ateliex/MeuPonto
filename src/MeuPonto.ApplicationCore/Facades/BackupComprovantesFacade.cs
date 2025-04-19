@@ -1,7 +1,7 @@
 ﻿using System.Transactions;
-using MeuPonto.Models.Pontos;
+using MeuPonto.Models;
 
-namespace MeuPonto.Features.BackupComprovantes;
+namespace MeuPonto.Facades;
 
 public static class BackupComprovantesFacade
 {

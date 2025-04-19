@@ -1,7 +1,7 @@
 ﻿using AngleSharp.Html.Dom;
 using MeuPonto.Helpers;
 using MeuPonto.Support;
-using MeuPonto.Models.Contratos;
+using MeuPonto.Models;
 
 namespace MeuPonto.Drivers;
 

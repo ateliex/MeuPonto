@@ -2,9 +2,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using MeuPonto.Models.Folhas;
+using MeuPonto.Models;
 
-namespace MeuPonto.Pages.Pontos.Folhas;
+namespace MeuPonto.Pages.Folhas;
 
 public class DetalharModel : PageModel
 {

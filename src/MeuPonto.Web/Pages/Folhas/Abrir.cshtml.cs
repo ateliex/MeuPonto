@@ -1,11 +1,11 @@
 ﻿using MeuPonto.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using MeuPonto.Features.GestaoFolha;
-using MeuPonto.Models.Folhas;
+using MeuPonto.Models;
 using MeuPonto.Extensions;
+using MeuPonto.Facades;
 
-namespace MeuPonto.Pages.Pontos.Folhas;
+namespace MeuPonto.Pages.Folhas;
 
 public class AbrirModel : FormPageModel
 {

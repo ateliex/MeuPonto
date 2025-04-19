@@ -3,8 +3,8 @@ using MeuPonto.Drivers;
 using MeuPonto.Support;
 using Microsoft.EntityFrameworkCore;
 using System.Transactions;
-using MeuPonto.Features.GestaoContratos;
-using MeuPonto.Models.Contratos;
+using MeuPonto.Models;
+using MeuPonto.Facades;
 
 namespace MeuPonto.StepDefinitions;
 

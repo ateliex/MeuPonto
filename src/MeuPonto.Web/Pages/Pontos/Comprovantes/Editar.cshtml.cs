@@ -2,8 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.EntityFrameworkCore;
-using MeuPonto.Features.BackupComprovantes;
-using MeuPonto.Models.Pontos;
+using MeuPonto.Facades;
+using MeuPonto.Models;
 
 namespace MeuPonto.Pages.Pontos.Comprovantes;
 

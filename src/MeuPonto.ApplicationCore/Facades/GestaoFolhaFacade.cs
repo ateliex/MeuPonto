@@ -1,7 +1,7 @@
 ﻿using System.Transactions;
-using MeuPonto.Models.Folhas;
+using MeuPonto.Models;
 
-namespace MeuPonto.Features.GestaoFolha;
+namespace MeuPonto.Facades;
 
 public static class GestaoFolhaFacade
 {

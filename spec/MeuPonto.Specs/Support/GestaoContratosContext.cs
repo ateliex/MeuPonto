@@ -1,5 +1,5 @@
 ﻿using MeuPonto.Drivers;
-using MeuPonto.Models.Contratos;
+using MeuPonto.Models;
 
 namespace MeuPonto.Support;
 

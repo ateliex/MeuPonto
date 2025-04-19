@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel;
 
-namespace MeuPonto.Pages.Pontos.Folhas;
+namespace MeuPonto.Pages.Folhas;
 
 public class RelatorioModel : PageModel
 {

@@ -1,7 +1,7 @@
 ﻿using System.Transactions;
-using MeuPonto.Models.Contratos;
+using MeuPonto.Models;
 
-namespace MeuPonto.Features.GestaoContratos;
+namespace MeuPonto.Facades;
 
 public static class GestaoContratosFacade
 {

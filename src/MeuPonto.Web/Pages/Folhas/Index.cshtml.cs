@@ -6,9 +6,9 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using MeuPonto.Helpers;
 using MeuPonto.Pages.Shared;
 using MeuPonto.Extensions;
-using MeuPonto.Models.Folhas;
+using MeuPonto.Models;
 
-namespace MeuPonto.Pages.Pontos.Folhas;
+namespace MeuPonto.Pages.Folhas;
 
 public class IndexModel : PageModel
 {

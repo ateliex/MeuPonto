@@ -2,8 +2,8 @@ using MeuPonto.Data;
 using MeuPonto.Drivers;
 using MeuPonto.Support;
 using Microsoft.EntityFrameworkCore;
-using MeuPonto.Features.RegistroPontos;
-using MeuPonto.Models.Pontos;
+using MeuPonto.Facades;
+using MeuPonto.Models;
 
 namespace MeuPonto.StepDefinitions;
 

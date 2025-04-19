@@ -2,8 +2,8 @@
 using MeuPonto.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using MeuPonto.Features.RegistroPontos;
-using MeuPonto.Models.Pontos;
+using MeuPonto.Facades;
+using MeuPonto.Models;
 
 namespace MeuPonto.Pages.Pontos;
 

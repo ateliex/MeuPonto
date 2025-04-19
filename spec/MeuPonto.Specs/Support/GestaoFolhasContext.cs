@@ -1,4 +1,4 @@
-﻿using MeuPonto.Models.Folhas;
+﻿using MeuPonto.Models;
 
 namespace MeuPonto.Support;
 

@@ -1,8 +1,5 @@
 ﻿using MeuPonto.Models;
-using MeuPonto.Models.Contratos;
-using MeuPonto.Models.Pontos;
 using Microsoft.EntityFrameworkCore;
-using MeuPonto.Models.Folhas;
 
 namespace MeuPonto.Data;
 

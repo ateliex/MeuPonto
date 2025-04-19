@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using MeuPonto.Extensions;
-using MeuPonto.Models.Pontos;
+using MeuPonto.Models;
 
 namespace MeuPonto.Pages.Pontos;
 

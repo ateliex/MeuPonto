@@ -1,5 +1,4 @@
-﻿using MeuPonto.Models.Contratos;
-using MeuPonto.Models.Pontos;
+﻿using MeuPonto.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace MeuPonto.Data;

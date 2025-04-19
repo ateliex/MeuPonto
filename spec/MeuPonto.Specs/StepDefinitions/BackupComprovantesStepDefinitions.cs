@@ -3,11 +3,10 @@ using MeuPonto.Drivers;
 using MeuPonto.Support;
 using Microsoft.EntityFrameworkCore;
 using System.Transactions;
-using MeuPonto.Features.BackupComprovantes;
-using MeuPonto.Features.RegistroPontos;
-using MeuPonto.Models.Pontos;
+using MeuPonto.Models;
 using System.Security.Claims;
 using MeuPonto.Extensions;
+using MeuPonto.Facades;
 
 namespace MeuPonto.StepDefinitions;
 

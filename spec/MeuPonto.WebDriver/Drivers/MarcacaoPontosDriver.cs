@@ -2,7 +2,7 @@
 using MeuPonto.Helpers;
 using MeuPonto.Support;
 using System.ComponentModel;
-using MeuPonto.Models.Pontos;
+using MeuPonto.Models;
 
 namespace MeuPonto.Drivers;
 

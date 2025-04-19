@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
-using MeuPonto.Models.Pontos;
+using MeuPonto.Models;
 
 namespace MeuPonto.Pages.Pontos;
 

@@ -2,10 +2,10 @@
     x:Class="MeuPonto.Windows.Contratos.GestaoContratosWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:contratos="clr-namespace:MeuPonto.Models.Contratos;assembly=MeuPonto.DomainModel"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:MeuPonto.Windows.Contratos"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:models="clr-namespace:MeuPonto.Models;assembly=MeuPonto.DomainModel"
     xmlns:system="clr-namespace:System;assembly=System.Xaml.Extensions"
     Title="Gestão de Contratos"
     Width="800"
@@ -15,9 +15,9 @@
     mc:Ignorable="d">
     <Window.Resources>
         <ResourceDictionary>
-            <CollectionViewSource x:Key="contratosViewSource" d:DesignSource="{d:DesignInstance {x:Type contratos:Contrato}, CreateList=True}" />
+            <CollectionViewSource x:Key="contratosViewSource" d:DesignSource="{d:DesignInstance {x:Type models:Contrato}, CreateList=True}" />
             <CollectionViewSource x:Key="semanaViewSource" Source="{Binding JornadaTrabalhoSemanalPrevista.Semana, Source={StaticResource contratosViewSource}}" />
-            <!--<CollectionViewSource x:Key="recursoTiposViewSource" d:DesignSource="{d:DesignInstance {x:Type contratos:ContratoRecursoTipo}, CreateList=False}" />-->
+            <!--<CollectionViewSource x:Key="recursoTiposViewSource" d:DesignSource="{d:DesignInstance {x:Type models:ContratoRecursoTipo}, CreateList=False}" />-->
             <Image x:Key="Save" Source="/Resources/saveHS.png" />
             <Image x:Key="SaveAll" Source="/Resources/saveAllHS.png" />
         </ResourceDictionary>

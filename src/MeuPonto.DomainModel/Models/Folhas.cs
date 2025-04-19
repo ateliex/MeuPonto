@@ -1,8 +1,27 @@
-﻿using MeuPonto.Models.Contratos;
-using System.ComponentModel;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace MeuPonto.Models.Folhas;
+namespace MeuPonto.Models;
+
+public enum StatusFolhaEnum
+{
+    Aberta = 0,
+
+    Fechada = 1
+}
+
+public class StatusFolha
+{
+    public StatusFolhaEnum Id { get; set; }
+
+    [MaxLength(255)]
+    public string Nome { get; set; } = default!;
+}
 
 public class Folha : GlobalTableEntity
 {

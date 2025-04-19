@@ -2,10 +2,8 @@ using MeuPonto.Data;
 using MeuPonto.Drivers;
 using MeuPonto.Support;
 using System.Transactions;
-using MeuPonto.Features.GestaoFolha;
-using MeuPonto.Features.RegistroPontos;
-using MeuPonto.Models.Folhas;
-using MeuPonto.Models.Pontos;
+using MeuPonto.Facades;
+using MeuPonto.Models;
 using System.Security.Claims;
 using MeuPonto.Extensions;
 

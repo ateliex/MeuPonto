@@ -1,7 +1,7 @@
 ﻿using System.Transactions;
-using MeuPonto.Models.Pontos;
+using MeuPonto.Models;
 
-namespace MeuPonto.Features.RegistroPontos;
+namespace MeuPonto.Facades;
 
 public static class RegistroPontosFacade
 {

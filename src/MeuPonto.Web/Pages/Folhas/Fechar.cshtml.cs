@@ -2,10 +2,9 @@
 using MeuPonto.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using MeuPonto.Models.Folhas;
-using MeuPonto.Models.Pontos;
+using MeuPonto.Models;
 
-namespace MeuPonto.Pages.Pontos.Folhas;
+namespace MeuPonto.Pages.Folhas;
 
 public class FecharModel : FormPageModel
 {

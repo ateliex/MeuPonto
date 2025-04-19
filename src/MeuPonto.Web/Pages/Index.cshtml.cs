@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel;
-using MeuPonto.Models.Folhas;
+using MeuPonto.Models;
 
 namespace MeuPonto.Pages;
 

@@ -1,7 +1,7 @@
 ﻿using AngleSharp.Html.Dom;
 using MeuPonto.Helpers;
 using MeuPonto.Support;
-using MeuPonto.Models.Folhas;
+using MeuPonto.Models;
 
 namespace MeuPonto.Drivers;
 
@@ -12,12 +12,6 @@ public class ApuracaoPontosDriver
     public IHtmlDocument Document { get; private set; }
 
     public IHtmlAnchorElement ContratosAnchor { get; private set; }
-
-    public IHtmlAnchorElement MarcacaoPontoAnchor { get; private set; }
-
-    public IHtmlAnchorElement AberturaFolhaPontoAnchor { get; private set; }
-
-    public IHtmlAnchorElement CriacaoContratoAnchor { get; private set; }
 
     public ApuracaoPontosDriver(AngleSharpContext angleSharp)
     {
@@ -32,19 +26,19 @@ public class ApuracaoPontosDriver
 
         //ContratosAnchor.Should().NotBeNull("'a tela inicial deve ter um link para o cadastro de contratos'");
 
-        //
+        ////
 
-        MarcacaoPontoAnchor = Document.GetAnchor("Marcacao.Ponto");
+        //MarcacaoPontoAnchor = Document.GetAnchor("Marcacao.Ponto");
 
-        //MarcacaoPontoAnchor.Should().NotBeNull("'a tela inicial deve ter um link para a marcação de ponto'");
+        ////MarcacaoPontoAnchor.Should().NotBeNull("'a tela inicial deve ter um link para a marcação de ponto'");
 
-        AberturaFolhaPontoAnchor = Document.GetAnchor("Abertura.Folha");
+        //AberturaFolhaPontoAnchor = Document.GetAnchor("Abertura.Folha");
 
-        //AberturaFolhaPontoAnchor.Should().NotBeNull("'a tela inicial deve ter um link para a abertura de folha de ponto'");
+        ////AberturaFolhaPontoAnchor.Should().NotBeNull("'a tela inicial deve ter um link para a abertura de folha de ponto'");
 
-        //
+        ////
 
-        CriacaoContratoAnchor = Document.GetAnchor("Criacao.Contrato");
+        //CriacaoContratoAnchor = Document.GetAnchor("Criacao.Contrato");
 
         //CriacaoContratoAnchor.Should().NotBeNull("'a tela inicial deve ter um link para a criação de contrato'");
     }
